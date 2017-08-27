@@ -1,0 +1,29 @@
+<p>
+  product works!
+</p>
+
+<form #productForm="ngForm" class="col-sm-6" novalidate (submit)="add()" >
+  <!-- no validate to turn off HTML5 form validation-->
+ <!-- #'productFrom' is the dynamic name to referance for form and we can use it to access 
+properites of markup -->
+  <div class="form-group">
+    <label for="pId">pId:</label>
+    <input type="text" class="form-control" id="pId" name="pId" [(ngModel)]="product.id" placeholder="ID" required #pid='ngModel'>
+    <!--div [hidden]="pid.valid" class="alert alert-danger">Product ID required</div-->
+  </div>
+  <div class="form-group">
+    <label for="name">name:</label>
+    <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="product.name"  placeholder="name" required #name='ngModel'>
+  </div>
+  <div class="form-group">
+    <label for="Price">Price:</label>
+    <input type="text" class="form-control" id="price" name="price"  [(ngModel)]="product.price"  placeholder="Price" required #price='ngModel'>
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" class="form-control" id="imageUrl" name="imageUrl"  [(ngModel)]="product.imageUrl"  placeholder="URL" required #imageUrl='ngModel'>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+</form>
+
+{{product | json}}

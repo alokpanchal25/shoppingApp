@@ -1,0 +1,28 @@
+<p>
+  customer works!
+</p>
+
+<form  #customerForm="ngForm" (submit)="getData()">
+  <div class="form-group">
+    <label for="c_name">Customer Name:</label>
+    <input type="text" class="form-control" id="c_name" name="c_name" [(ngModel)]="customer.name" required #cname="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="c_dob">Customer DOB:</label>
+    <input type="date" class="form-control" id="c_dob" name="c_DOB" [(ngModel)]="customer.dob" required #cdob="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="c_address">Customer Address:</label>
+    <input type="text" class="form-control" id="c_address" name="c_address" [(ngModel)]="customer.address" required #caddress="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="mobile">Customer Mobile Number:</label>
+    <input type="number" class="form-control" id="mobile" name="mobile" [(ngModel)]="customer.mobile" required #caddress="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="c_email">Customer Email:</label>
+    <input type="email" class="form-control" id="c_email" name="c_email" [(ngModel)]="customer.email" required #cemail="ngModel">
+  </div>
+  <button type="submit" class="btn btn-default" [disabled]="!customerForm.valid">Submit</button>
+</form>
+<!-- Try it Yourself » -->

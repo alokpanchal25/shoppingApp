@@ -1,0 +1,63 @@
+<form [formGroup]="orderForm" (submit)="addOrder(orderForm.value)">
+  <div class="form-group col-sm-5">
+    <input type="text" class="form-control" formControlName="customerName" placeholder="Customer Name" />
+     {{orderForm.get('customerName').errors | json}}
+  </div>
+  <div class="form-group col-sm-offset-1 col-sm-5">
+    <input type="date" class="form-control" formControlName="orderDate" placeholder="Order Date" />
+  </div>
+  <div class="form-group  col-sm-5">
+    <input type="text" class="form-control" formControlName="orderId" placeholder="OrderID" />
+  </div>
+  <div formGroupName="address" class="col-sm-offset-1 col-sm-10 ">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="addressLine1" placeholder="Address Line 1" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="addressLine2" placeholder="Address Line 1" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="city" placeholder="City" />
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="pin" placeholder="Pin code" />
+    </div>
+  </div>
+  <br/> <br/>
+  <div class="form-group col-sm-12">
+    <button class="btn btn-primary" (click)="addCard()">Add Card</button>
+  </div>
+  <div formArrayName="cardDetails" class="form-group col-sm-12 well">
+    <div *ngFor="let card of orderForm.controls.cardDetails.controls; let i=index" class="">
+      <div class="form-group" [formGroupName]="i">
+        <div class="form-group col-sm-3">
+          <input type="number" class="form-control" formControlName="cardNumber" placeholder="Card Number" />
+        </div>
+        <div class="form-group  col-sm-3">
+          <input type="date" class="form-control" formControlName="expiryMonth" placeholder="Expiry Month" />
+        </div>
+        <div class="form-group  col-sm-3">
+          <input type="date" class="form-control" formControlName="expiryYear" placeholder="Expiry Year" />
+        </div>
+        <div class="form-group  col-sm-2">
+          <input type="number" class="form-control" formControlName="cvv" placeholder="CVV" />
+        </div>
+        <button class="btn btn-danger" (click)="removeCard(i)" *ngIf="i>0"><span class="	glyphicon glyphicon-remove"></span></button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group  col-sm-5">
+    <input type="number" class="form-control" formControlName="amount" placeholder="Amount" />
+  </div>
+  <div class="form-group  col-sm-5  col-sm-offset-1">
+    <input type="email" class="form-control" formControlName="email" placeholder="email" />
+  </div>
+  <div class="form-group  col-sm-5">
+    <button type="submit" [disabled]="orderForm.invalid" class="btn btn-primary">Add</button>
+  </div>
+</form>
+<div class="col-sm-10">
+  {{orderForm.value | json}} {{orderForm.invalid | json}}
+</div>

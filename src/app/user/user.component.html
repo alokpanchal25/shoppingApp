@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>user works! {{ownerName}} </h2>
+      <h3>docheck is working{{data}}</h3>
+      <p>
+        <input class="form-control" type="text" [value]="name"/><br/>
+        {{name}}
+      </p>
+
+
+      <button (click)="updateName()" class="btn btn-primary">update name</button>
+      <button (click)="toggleTable()" class="btn btn-default">Toggle Table</button>
+
+      <button (click)="addUser()" class="btn btn-default">Add Data in Table</button>
+
+      <app-userdetails [users]="usersList" [toggle]="toggle" [title]="'My Static Title'" (onHide)="toggleVisible($event)"  (onChange)="getValue($event)"></app-userdetails>
+    <br>
+    <label>coming from: <b>{{lable}}</b></label>
+    
+    </div>
+  </div>
+</div>
